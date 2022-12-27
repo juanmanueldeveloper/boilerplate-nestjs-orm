@@ -13,7 +13,7 @@
 
 ## Description
 
-[NestJS](https://github.com/nestjs/nest) Boilerplate made with ❤️ by [💡VivifyIdeas💡](https://www.vivifyideas.com).
+[NestJS](https://github.com/nestjs/nest) Boilerplate made with ❤️ by [💡JUANMA💡](https://github.com/juanmanueldeveloper).
 
 ## Start Guide
 
