@@ -4,6 +4,7 @@ import { Hash } from '../../utils/Hash';
 import { ConfigService } from './../config';
 import { User, UsersService } from './../user';
 import { LoginPayload } from './login.payload';
+import { JwtUser } from './interfaces/jwt-user.interface';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +19,7 @@ export class AuthService {
       expiresIn: this.configService.get('JWT_EXPIRATION_TIME'),
       accessToken: this.jwtService.sign({ id: user.id }),
       user,
-    };
+    } as JwtUser;
   }
 
   async validateUser(payload: LoginPayload): Promise<any> {
