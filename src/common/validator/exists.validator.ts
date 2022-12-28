@@ -50,7 +50,7 @@ export function Exists<E>(
   return function (object: Object, propertyName: string) {
     registerDecorator({
       target: object.constructor,
-      propertyName: propertyName,
+      propertyName,
       options: validationOptions,
       constraints,
       validator: ExistsValidator,

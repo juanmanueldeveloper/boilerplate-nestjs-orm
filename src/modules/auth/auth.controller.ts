@@ -9,10 +9,10 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthService, LoginPayload, RegisterPayload } from './';
-import { CurrentUser } from './../common/decorator/current-user.decorator';
+import { CurrentUser } from '../../common/decorator/current-user.decorator';
 import { User, UsersService } from './../user';
-import { formatResponse } from '../../shared/handler/responseHandler';
-import { IResponse } from '../../shared/handler/interfaces/IResponse.interface';
+import { formatResponse } from '../../shared';
+import { IResponse } from '../../shared';
 import { JwtUser } from '../../modules/auth/interfaces/jwt-user.interface';
 
 @Controller('api/auth')
@@ -29,7 +29,7 @@ export class AuthController {
   @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
   async login(@Body() payload: LoginPayload): Promise<IResponse<JwtUser>> {
     const user = await this.authService.validateUser(payload);
-    const tokenWithUser = (await this.authService.createToken(user)) as JwtUser;
+    const tokenWithUser =  this.authService.createToken(user);
     return formatResponse<JwtUser>(
       HttpStatus.CREATED,
       '',
@@ -45,7 +45,7 @@ export class AuthController {
     @Body() payload: RegisterPayload,
   ): Promise<IResponse<JwtUser>> {
     const user = await this.userService.create(payload);
-    const tokenWithUser = (await this.authService.createToken(user)) as JwtUser;
+    const tokenWithUser = (await this.authService.createToken(user));
     return formatResponse<JwtUser>(
       HttpStatus.CREATED,
       '',

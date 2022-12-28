@@ -1,7 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { useContainer } from 'class-validator';
-import { TrimStringsPipe } from './modules/common/transformer/trim-strings.pipe';
+import { TrimStringsPipe } from './common/transformer/trim-strings.pipe';
 import { AppModule } from './modules/main/app.module';
 import { setupSwagger } from './swagger';
 

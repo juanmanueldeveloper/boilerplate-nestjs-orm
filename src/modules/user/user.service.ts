@@ -1,8 +1,7 @@
 import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-
-import { User, UserFillableFields } from './user.entity';
+import { User, UserFillableFields } from '.';
 
 @Injectable()
 export class UsersService {
