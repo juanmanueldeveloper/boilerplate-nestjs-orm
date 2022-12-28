@@ -3,7 +3,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { PasswordTransformer } from './password.transformer';
+import { PasswordTransformer } from '../../../transformers/password.transformer';
 
 @Entity({
   name: 'users',

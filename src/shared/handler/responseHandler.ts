@@ -3,6 +3,7 @@ import { IResponse } from '../handler/interfaces/IResponse.interface';
 
 /**
  * Format error to use
+ *
  * @param {EHttpStatus} statusCode
  * @param {string} message
  * @param {T} data
@@ -14,7 +15,7 @@ export const formatResponse = <T>(
     statusCode: HttpStatus,
     message: string,
     data: T,
-    proxyResponse: boolean = false,
+    proxyResponse = false,
     total?: number,
 ): IResponse<T> | T => {
     let response: IResponse<T> | T;
@@ -24,7 +25,7 @@ export const formatResponse = <T>(
         response = {
             statusCode,
             message,
-            payload: data as T,
+            payload: data ,
         };
         if (total) response.count = total;
     }

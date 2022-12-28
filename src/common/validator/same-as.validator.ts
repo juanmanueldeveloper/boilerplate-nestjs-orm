@@ -8,7 +8,7 @@ export function SameAs(
     registerDecorator({
       name: 'sameAs',
       target: object.constructor,
-      propertyName: propertyName,
+      propertyName,
       options: validationOptions,
       constraints: [property],
       validator: {

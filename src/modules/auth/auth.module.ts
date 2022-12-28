@@ -4,7 +4,7 @@ import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from './../config';
 import { UserModule } from './../user';
 import { AuthService } from './auth.service';
-import { JwtStrategy } from './jwt.strategy';
+import { JwtStrategy } from './strategy/jwt.strategy';
 import { AuthController } from './auth.controller';
 
 @Module({
@@ -14,7 +14,7 @@ import { AuthController } from './auth.controller';
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => {
+      useFactory: (configService: ConfigService) => {
         return {
           secret: configService.get('JWT_SECRET_KEY'),
           signOptions: {
