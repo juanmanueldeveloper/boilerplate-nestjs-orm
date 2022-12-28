@@ -19,5 +19,5 @@ module.exports = {
   password: DB_PASSWORD,
   database: DB_DATABASE,
   migrations: [__dirname + '/src/migrations/*{.ts,.js}'],
-  entities: [__dirname + '/src/**/*.entity.{ts,js}'],
+  entities: [__dirname + '/src/**/*.dto.{ts,js}'],
 };
