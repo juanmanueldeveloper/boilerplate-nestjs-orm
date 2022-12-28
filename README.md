@@ -19,7 +19,7 @@
 
 ### Outside Docker containers
 
-- Create .env file `cp .env.example .env` and replace existing env variables
+- Create .env file `cp .env.dev .env` and replace existing env variables
   (mysql/mariadb connection params)
 - Install dependencies `yarn`
 - Start the app `yarn start` (app will be exposed through the port 3000)
@@ -78,7 +78,7 @@ $ docker exec -it nest yarn test:cov
 ## Environment Configuration
 
 Integrated Configuration Module so you can just inject `ConfigService`
-and read all environment variables from `.env` file, which is created automatically by the init script from `.env.example`.
+and read all environment variables from `.env` file, which is created automatically by the init script from `.env.env`.
 
 ## Swagger
 
