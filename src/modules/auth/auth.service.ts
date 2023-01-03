@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Hash } from '../../utils/Hash';
-import { ConfigService } from './../config';
+import { ConfigService } from '../../config';
 import { User, UsersService } from './../user';
 import { LoginPayload } from './payload/login.payload';
 import { JwtUser } from './interfaces/jwt-user.interface';
@@ -16,7 +16,8 @@ export class AuthService {
 
   createToken(user: User) {
     return {
-      expiresIn: this.configService.get('JWT_EXPIRATION_TIME'),
+      // expiresIn: this.configService.get('JWT_EXPIRATION_TIME'),
+      expiresIn: '30000',
       accessToken: this.jwtService.sign({ id: user.id }),
       user,
     } as JwtUser;

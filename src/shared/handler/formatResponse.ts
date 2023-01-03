@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { IResponse } from './interfaces/IResponse.interface';
+import { IResponse } from './interfaces/response.interface';
 
 /**
  * Format error to use
