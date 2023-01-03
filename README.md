@@ -78,8 +78,10 @@ $ docker exec -it nest yarn test:cov
 ## Environment Configuration
 
 Integrated Configuration Module so you can just inject `ConfigService`
-and read all environment variables from `.env` file, which is created automatically by the init script from `.env.env`.
-
+and read all environment variables from `.json` file, which is created automatically by the init script from `config.local.json`.
+If you want to use dotenv the values ​​are as follows:
+local .env: `CONFIG={ "environment": "local", "projectName": "svc-nestjs-boilerplate", "rootPath": "/api", "appPort": 8083, "integrations": {}, "database": { "postgress": {"type": "mariadb","host": "localhost","port": 3306,"username": "nest","password": "nest","database": "nest","sync":false}}}`
+development .env: `CONFIG={ "environment": "local", "projectName": "svc-nestjs-boilerplate", "rootPath": "/api", "appPort": 8083, "integrations": {}, "database": { "postgress": {"type": "mariadb","host": "db","port": 3306,"username": "nest","password": "nest","database": "nest","sync":false}}}`
 ## Swagger
 
 RESTful APIs you can describe with already integrated Swagger.
