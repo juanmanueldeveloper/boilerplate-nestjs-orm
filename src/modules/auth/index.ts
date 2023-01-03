@@ -1,5 +1,5 @@
-export * from './dto/login.dto';
-export * from './dto/register.dto';
+export * from './payload/login.payload';
+export * from './payload/register.payload';
 export * from './auth.service';
 export * from './strategy/jwt.strategy';
 export * from './auth.module';

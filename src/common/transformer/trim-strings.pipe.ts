@@ -5,7 +5,7 @@ export class TrimStringsPipe extends AbstractTransformPipe {
     return ['password', 'passwordConfirmation'];
   }
 
-  protected transformValue(value: any) {
+  protected transformValue(value: unknown) {
     return typeof value === 'string' ? value.trim() : value;
   }
 }

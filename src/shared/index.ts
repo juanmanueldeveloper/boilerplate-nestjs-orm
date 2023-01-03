@@ -1,2 +1,2 @@
-export * from './handler/responseHandler';
+export * from './handler/formatResponse';
 export * from './handler/interfaces/IResponse.interface';

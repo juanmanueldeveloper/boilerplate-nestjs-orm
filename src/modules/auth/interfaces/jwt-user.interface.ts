@@ -1,7 +1,7 @@
-import { User } from '../../user'
+import { User } from '../../user';
 
 export interface JwtUser {
-    expiresIn: string,
-    accessToken: string,
-    user: User,
-  }
+  expiresIn: string;
+  accessToken: string;
+  user: User;
+}
