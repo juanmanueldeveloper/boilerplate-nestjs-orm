@@ -3,9 +3,9 @@ import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './modules/main/app.module';
 import { setupSwagger } from './swagger';
 
-declare const module: any;
+declare const module;
 
-async function bootstrap() {
+const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);
   setupSwagger(app);
   app.enableCors();
@@ -16,5 +16,6 @@ async function bootstrap() {
     module.hot.accept();
     module.hot.dispose(() => app.close());
   }
-}
-bootstrap();
+};
+
+void bootstrap();

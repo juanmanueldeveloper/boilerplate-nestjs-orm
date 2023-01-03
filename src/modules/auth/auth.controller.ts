@@ -29,10 +29,9 @@ export class AuthController {
   @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
   async login(@Body() payload: LoginPayload): Promise<IResponse<JwtUser>> {
     const user = await this.authService.validateUser(payload);
-    const tokenWithUser =  this.authService.createToken(user);
+    const tokenWithUser = this.authService.createToken(user);
     return formatResponse<JwtUser>(
       HttpStatus.CREATED,
-      '',
       tokenWithUser,
     ) as IResponse<JwtUser>;
   }
@@ -45,10 +44,9 @@ export class AuthController {
     @Body() payload: RegisterPayload,
   ): Promise<IResponse<JwtUser>> {
     const user = await this.userService.create(payload);
-    const tokenWithUser = (await this.authService.createToken(user));
+    const tokenWithUser = this.authService.createToken(user);
     return formatResponse<JwtUser>(
       HttpStatus.CREATED,
-      '',
       tokenWithUser,
     ) as IResponse<JwtUser>;
   }
@@ -59,7 +57,7 @@ export class AuthController {
   @ApiResponse({ status: HttpStatus.OK, description: 'Successful Login' })
   @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'Bad Request' })
   @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
-  async getLoggedInUser(@CurrentUser() user: User): Promise<IResponse<User>> {
-    return formatResponse<User>(HttpStatus.OK, '', user) as IResponse<User>;
+  getLoggedInUser(@CurrentUser() user: User): IResponse<User> {
+    return formatResponse<User>(HttpStatus.OK, user) as IResponse<User>;
   }
 }
