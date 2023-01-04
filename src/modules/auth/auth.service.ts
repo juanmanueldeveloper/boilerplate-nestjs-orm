@@ -1,9 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Hash } from '../../utils/Hash';
-import { ConfigService } from './../config';
+import { ConfigService } from '../../config';
 import { User, UsersService } from './../user';
-import { LoginPayload } from './login.payload';
+import { LoginPayload } from './payload/login.payload';
 import { JwtUser } from './interfaces/jwt-user.interface';
 
 @Injectable()
@@ -14,15 +14,16 @@ export class AuthService {
     private readonly userService: UsersService,
   ) {}
 
-  async createToken(user: User) {
+  createToken(user: User) {
+    const { config } = this.configService;
     return {
-      expiresIn: this.configService.get('JWT_EXPIRATION_TIME'),
+      expiresIn: config.cryptography.JWT.expirationTime,
       accessToken: this.jwtService.sign({ id: user.id }),
       user,
     } as JwtUser;
   }
 
-  async validateUser(payload: LoginPayload): Promise<any> {
+  async validateUser(payload: LoginPayload): Promise<User> {
     const user = await this.userService.getByEmail(payload.email);
     if (!user || !Hash.compare(payload.password, user.password)) {
       throw new UnauthorizedException('Invalid credentials!');

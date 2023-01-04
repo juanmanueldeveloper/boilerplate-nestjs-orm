@@ -1,20 +1,35 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import { AppModule } from './modules/main/app.module';
+import { useContainer } from 'class-validator';
+import { AppModule } from './main/app.module';
 import { setupSwagger } from './swagger';
+import { ConfigService } from './config';
+import { TrimStringsPipe } from './common';
 
-declare const module: any;
+declare const module;
 
-async function bootstrap() {
+/**
+ * This method initialize configuration setup
+ */
+const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);
-  setupSwagger(app);
+  const { appPort, rootPath } = app.get(ConfigService);
   app.enableCors();
-  app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
+  app.useGlobalPipes(new TrimStringsPipe(), new ValidationPipe());
+  app.setGlobalPrefix(rootPath);
+  setupSwagger(app);
+  useContainer(app.select(AppModule), { fallbackOnErrors: true });
+  await app.listen(appPort);
 
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
   }
-}
-bootstrap();
+};
+
+/**
+ * Run app
+ */
+void bootstrap();

@@ -1,0 +1,25 @@
+{
+  "environment": "development",
+  "projectName": "svc-nestjs-boilerplate",
+  "rootPath": "/api/boilerplate",
+  "baseUrl": "http://localhost",
+  "appPort": 8083,
+  "integrations": {},
+  "database": {
+    "postgress": {
+      "type": "mariadb",
+      "host": "db",
+      "port": 3306,
+      "username": "nest",
+      "password": "nest",
+      "database": "nest",
+      "sync": false
+    }
+  },
+  "cryptography": {
+    "JWT": {
+      "expirationTime": "7d",
+      "secretKey": "xuXSUzbLKwt49GLgdO10TyY5Tfgh0NBwq48G18knhyjHT"
+    }
+  }
+}

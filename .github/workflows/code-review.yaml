@@ -1,0 +1,46 @@
+name: Node.js CI
+
+on: [push]
+
+jobs:
+  code-quality-and-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Node setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.15.5"
+
+      - name: Node dependencies install
+        run: npm install
+
+      - name: Code quality with ESLint
+        run: npm run lint
+
+      - name: Unit testing
+        run: npm run test
+
+  tag:
+    needs: code-quality-and-testing
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date '+%Y.%-m%-d.%H%M')"
+      - name: Checkout branch "master"
+        uses: actions/checkout@v2
+        with:
+          ref: "master"
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo, 
+            ref: 'refs/tags/v${{steps.date.outputs.date}}',
+            sha: context.sha
+            })
