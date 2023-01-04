@@ -15,15 +15,13 @@ import { AuthController } from './auth.controller';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
+        const { config } = configService;
         return {
-          // secret: configService.get('JWT_SECRET_KEY'),
-          secret: 'jajajajajajajaja',
+          secret: config.cryptography.JWT.secretKey,
           signOptions: {
-            // ...(configService.get('JWT_EXPIRATION_TIME')
-            ...('3000'
+            ...(config.cryptography.JWT.expirationTime
               ? {
-                  // expiresIn: Number(configService.get('JWT_EXPIRATION_TIME')),
-                  expiresIn: Number('30000'),
+                  expiresIn: config.cryptography.JWT.expirationTime,
                 }
               : {}),
           },

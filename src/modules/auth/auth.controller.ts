@@ -15,7 +15,7 @@ import { formatResponse } from '../../shared';
 import { IResponse } from '../../shared';
 import { JwtUser } from '../../modules/auth/interfaces/jwt-user.interface';
 
-@Controller('api/auth')
+@Controller('/auth')
 @ApiTags('authentication')
 export class AuthController {
   constructor(

@@ -1,7 +1,8 @@
 {
   "environment": "local",
   "projectName": "svc-nestjs-boilerplate",
-  "rootPath": "/api",
+  "rootPath": "/api/boilerplate",
+  "baseUrl": "http://localhost",
   "appPort": 8083,
   "integrations": {},
   "database": {
@@ -12,7 +13,13 @@
       "username": "nest",
       "password": "nest",
       "database": "nest",
-      "sync":false
+      "sync": false
+    }
+  },
+  "cryptography": {
+    "JWT": {
+      "expirationTime": "7d",
+      "secretKey": "xuXSUzbLKwt49GLgdO10TyY5Tfgh0NBwq48G18knhyjHT"
     }
   }
 }

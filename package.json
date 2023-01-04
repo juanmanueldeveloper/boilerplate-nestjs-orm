@@ -6,10 +6,10 @@
   "license": "MIT",
   "scripts": {
     "prestart:local": "cp -r ./src/environments/config.local.json ./src/environments/config.json",
-    "docker:local": "cp -r ./.docker/compose.local.yml ./docker-compose.yml && docker-compose up -d",
+    "docker:local": "cp -r ./.docker/compose.local.yml ./docker-compose.yml && docker-compose up -d --remove-orphans",
     "start:local": "npm run docker:local && nodemon",
     "prestart:dev": "cp -r ./src/environments/config.dev.json ./src/environments/config.json",
-    "docker:dev": "cp -r ./.docker/compose.dev.yml ./docker-compose.yml && docker-compose up -d",
+    "docker:dev": "cp -r ./.docker/compose.dev.yml ./docker-compose.yml && docker-compose up -d --remove-orphans",
     "start:dev": "docker-compose up -d",
     "prestart:prod": "rm -rf dist && tsc",
     "start:prod": "node dist/main.js",
