@@ -39,6 +39,10 @@ export class ConfigService {
     return this.configuration.rootPath;
   }
 
+  get baseUrl(): string {
+    return this.configuration.baseUrl;
+  }
+
   get appPort(): number {
     return this.configuration.appPort;
   }

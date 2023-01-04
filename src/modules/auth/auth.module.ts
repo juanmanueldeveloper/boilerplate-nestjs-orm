@@ -17,8 +17,7 @@ import { AuthController } from './auth.controller';
       useFactory: (configService: ConfigService) => {
         const { config } = configService;
         return {
-          // secret: configService.get('JWT_SECRET_KEY'),
-          secret: 'jajajajajajajaja',
+          secret: config.cryptography.JWT.secretKey,
           signOptions: {
             ...(config.cryptography.JWT.expirationTime
               ? {

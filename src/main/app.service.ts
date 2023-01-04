@@ -6,7 +6,7 @@ export class AppService {
   constructor(private readonly configService: ConfigService) {}
 
   root(): string {
-    // return this.config.get('APP_URL');
-    return 'localhost';
+    const { baseUrl } = this.configService;
+    return baseUrl;
   }
 }

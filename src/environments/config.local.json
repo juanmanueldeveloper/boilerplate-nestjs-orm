@@ -2,6 +2,7 @@
   "environment": "local",
   "projectName": "svc-nestjs-boilerplate",
   "rootPath": "/api/boilerplate",
+  "baseUrl": "http://localhost",
   "appPort": 8083,
   "integrations": {},
   "database": {

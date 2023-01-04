@@ -7,6 +7,7 @@ export interface IAppConfig {
     environment: Environment;
     projectName: string;
     rootPath: string;
+    baseUrl: string;
     appPort: number;
     integrations: IIntegrations;
     database: IDatabase;
