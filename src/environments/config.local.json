@@ -3,7 +3,7 @@
   "projectName": "svc-nestjs-boilerplate",
   "rootPath": "/api/boilerplate",
   "baseUrl": "http://localhost",
-  "appPort": 8083,
+  "appPort": 8001,
   "integrations": {},
   "database": {
     "postgress": {
