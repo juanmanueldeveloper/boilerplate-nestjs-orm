@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
-import { AuthModule } from '../modules/auth';
+import { AuthController, AuthModule } from '../modules/auth';
 import { CommonModule } from '../common';
 import { ConfigModule, ConfigService } from '../config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { HttpLoggerMiddleware } from 'src/common/middleware/http-logger.middleware';
 
 @Module({
   imports: [
@@ -31,4 +32,10 @@ import { AppService } from './app.service';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(HttpLoggerMiddleware)
+      .forRoutes('*');
+  }
+}
