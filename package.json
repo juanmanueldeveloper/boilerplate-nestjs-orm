@@ -10,7 +10,7 @@
     "start:local": "npm run docker:local && nodemon",
     "prestart:dev": "cp -r ./src/environments/config.dev.json ./src/environments/config.json",
     "docker:dev": "cp -r ./.docker/compose.dev.yml ./docker-compose.yml && docker-compose up -d --remove-orphans",
-    "start:dev": "docker-compose up -d",
+    "start:dev": "npm run docker:dev && nodemon",
     "prestart:prod": "rm -rf dist && tsc",
     "start:prod": "node dist/main.js",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
