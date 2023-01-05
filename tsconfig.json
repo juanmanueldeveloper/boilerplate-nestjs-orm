@@ -1,5 +1,3 @@
-
-
 {
   "compilerOptions": {
     "module": "commonjs",
@@ -20,7 +18,7 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-/*       "@modules": ["src/modules"],
+      /*       "@modules": ["src/modules"],
       "@modules/*": ["src/modules/*"],
       "@shared": ["src/shared"],
       "@shared/*": ["src/shared/*"],
@@ -29,5 +27,6 @@
       "@utils": ["src/utils"],
       "@utils/*": ["src/utils/*"] */
     }
-  }
+  },
+  "include": ["src/**/*" , "src/environments/config.json"]
 }

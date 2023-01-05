@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { PasswordTransformer } from '../../../transformers/password.transformer';
+import { PasswordTransformer } from '../../../common/transformer/password.pipe';
 
 @Entity({
   name: 'users',
