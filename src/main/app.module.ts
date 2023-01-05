@@ -1,6 +1,6 @@
-import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
-import { AuthController, AuthModule } from '../modules/auth';
+import { AuthModule } from '../modules/auth';
 import { CommonModule } from '../common';
 import { ConfigModule, ConfigService } from '../config';
 import { AppController } from './app.controller';
