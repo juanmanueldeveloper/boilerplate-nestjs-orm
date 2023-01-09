@@ -18,7 +18,7 @@
 ## Start Guide
 
 ### Requirements
-- Node 18 o superior 
+- Node 14 o superior 
 ### Outside Docker containers
 
 - Create .env file `cp .env.dev .env` and replace existing env variables
